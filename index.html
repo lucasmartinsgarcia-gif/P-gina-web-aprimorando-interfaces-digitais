@@ -150,15 +150,32 @@
             <p><a href="#contato">Saiba mais e junte-se ao movimento →</a></p>
         </section>
     </div>
+/* Estilos padrões (Modo Claro) */
+body {
+  background-color: #ffffff;
+  color: #121212;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: sans-serif;
+  padding: 20px;
+}
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 - Empatia e Cooperação. Todos os direitos reservados.</p>
-        <p>
-            <a href="#" style="color:#50c878">Instagram</a> • 
-            <a href="#" style="color:#50c878">LinkedIn</a> • 
-            <a href="#" style="color:#50c878">Contato</a>
-        </p>
-    </footer>
-</body>
-</html>
+/* Estilos para o Modo Escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Estilo do botão */
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode button {
+  background-color: #eee;
+  color: #333;
+}
