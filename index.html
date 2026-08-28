@@ -358,3 +358,90 @@
 
 </body>
 </html>
+<!-- ================= CONTEÚDO HTML ================= -->
+<button id="like-btn" class="like-btn" aria-label="Curtir">
+  <span class="icon" id="like-icon">🤍</span>
+  <span id="like-text">Curtir</span>
+  <span id="like-count">(0)</span>
+</button>
+
+<!-- ================= ESTILOS CSS ================= -->
+<style>
+  .like-btn {
+    background-color: var(--bg-card, #ffffff);
+    color: var(--texto-principal, #475569);
+    border: 1px solid var(--borda-cor, #e2e8f0);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .like-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .like-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Estado ativo (Curtido) */
+  .like-btn.liked {
+    color: #ef4444;
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+
+  .like-btn .icon {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  .like-btn.liked .icon {
+    animation: like-pulse 0.3s forwards;
+  }
+
+  @keyframes like-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<!-- ================= SCRIPT JAVASCRIPT ================= -->
+<script>
+  (function() {
+    const likeBtn = document.getElementById('like-btn');
+    const likeIcon = document.getElementById('like-icon');
+    const likeText = document.getElementById('like-text');
+    const likeCount = document.getElementById('like-count');
+
+    let isLiked = false;
+    let count = 0;
+
+    likeBtn.addEventListener('click', () => {
+      isLiked = !isLiked;
+
+      if (isLiked) {
+        count++;
+        likeBtn.classList.add('liked');
+        likeIcon.textContent = '❤️';
+        likeText.textContent = 'Curtido';
+      } else {
+        count--;
+        likeBtn.classList.remove('liked');
+        likeIcon.textContent = '🤍';
+        likeText.textContent = 'Curtir';
+      }
+
+      likeCount.textContent = `(${count})`;
+    });
+  })();
+</script>
