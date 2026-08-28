@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            color: #0e0e0d;
+            color: #343430;
         }
         header {
             background: linear-gradient(135deg, #2f6baf, #046e27);
@@ -291,8 +291,55 @@
       color: var(--texto-secundario);
     }
   </style>
-</head>
-<body>
+</head><!-- === BARRA DE PROGRESSO DE LEITURA === -->
+<!-- Estrutura e Estilos da Barra -->
+<style>
+  /* Container da barra no topo fixo */
+  .progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: transparent;
+    z-index: 9999; /* Garante que fique acima de outros elementos */
+  }
+
+  /* A linha que vai enchendo */
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #3498db); /* Degradê verde e azul */
+    width: 0%;
+    transition: width 0.1s ease-out;
+  }
+</style>
+
+<!-- Elemento da Barra -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- Lógica em JavaScript -->
+<script>
+  window.onscroll = function() {
+    atualizarBarraProgresso();
+  };
+
+  function atualizarBarraProgresso() {
+    // Distância rolada do topo
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    
+    // Altura total rolável da página
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // Porcentagem calculada
+    const scrolled = (winScroll / height) * 100;
+    
+    // Aplica a largura na barra
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  }
+</script>
+<!-- === FIM DA BARRA DE PROGRESSO === -->
 
   <div class="container">
     <!-- CABEÇALHO COM O BOTÃO DE MODO NOTURNO -->
