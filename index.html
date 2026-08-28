@@ -150,8 +150,50 @@
             <p><a href="#contato">Saiba mais e junte-se ao movimento →</a></p>
         </section>
     </div>
-/* Estilos padrões (Modo Claro) */
-body <button id="theme-toggle">Alternar Modo Escuro</button>
+//* Variáveis para controlar as cores */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --button-bg: #333333;
+  --button-text: #ffffff;
+}
 
-<h1>Meu Titulo</h1>
-<p>Este é um texto de exemplo para testar o modo escuro.</p>
+/* Detecta preferência do sistema operacional */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --button-bg: #f0f0f0;
+    --button-text: #121212;
+  }
+}
+
+/* Sobrescreve quando a classe 'dark-theme' ou 'light-theme' for forçada via JS */
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #f0f0f0;
+  --button-text: #121212;
+}
+
+body.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --button-bg: #333333;
+  --button-text: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
