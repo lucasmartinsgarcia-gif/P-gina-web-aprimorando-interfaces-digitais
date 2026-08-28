@@ -150,50 +150,217 @@
             <p><a href="#contato">Saiba mais e junte-se ao movimento →</a></p>
         </section>
     </div>
-//* Variáveis para controlar as cores */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #121212;
-  --button-bg: #333333;
-  --button-text: #ffffff;
-}
 
-/* Detecta preferência do sistema operacional */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --button-bg: #f0f0f0;
-    --button-text: #121212;
-  }
-}
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 - Empatia e Cooperação. Todos os direitos reservados.</p>
+        <p>
+            <a href="#" style="color:#50c878">Instagram</a> • 
+            <a href="#" style="color:#50c878">LinkedIn</a> • 
+            <a href="#" style="color:#50c878">Contato</a>
+        </p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo com Modo Noturno Integrado</title>
+  
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS DE CORES PARA MODO CLARO E ESCURO
+       ========================================================================== */
+    :root {
+      /* Cores Padrão (Modo Claro) */
+      --bg-principal: #f8fafc;
+      --bg-card: #ffffff;
+      --texto-principal: #0f172a;
+      --texto-secundario: #475569;
+      --borda-cor: #e2e8f0;
+      --cor-primaria: #2563eb;
+      --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      
+      /* Botão de Alternância */
+      --btn-bg: #e2e8f0;
+      --btn-texto: #0f172a;
+    }
 
-/* Sobrescreve quando a classe 'dark-theme' ou 'light-theme' for forçada via JS */
-body.dark-theme {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --button-bg: #f0f0f0;
-  --button-text: #121212;
-}
+    /* Cores quando a classe .dark-mode estiver ativa no body */
+    body.dark-mode {
+      --bg-principal: #0f172a;
+      --bg-card: #1e293b;
+      --texto-principal: #f8fafc;
+      --texto-secundario: #94a3b8;
+      --borda-cor: #334155;
+      --cor-primaria: #3b82f6;
+      --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
 
-body.light-theme {
-  --bg-color: #ffffff;
-  --text-color: #121212;
-  --button-bg: #333333;
-  --button-text: #ffffff;
-}
+      --btn-bg: #334155;
+      --btn-texto: #f8fafc;
+    }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
+    /* ==========================================================================
+       2. ESTILOS GERAIS DA PÁGINA (Usando as variáveis acima)
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    body {
+      background-color: var(--bg-principal);
+      color: var(--texto-principal);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+      /* Transição suave ao trocar de tema */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Container Principal */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--borda-cor);
+      transition: border-color 0.3s ease;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: var(--texto-principal);
+    }
+
+    /* ==========================================================================
+       3. ESTILO DO BOTÃO DE MODO NOTURNO
+       ========================================================================== */
+    .btn-theme-toggle {
+      background-color: var(--btn-bg);
+      color: var(--btn-texto);
+      border: 1px solid var(--borda-cor);
+      padding: 10px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: var(--sombra);
+    }
+
+    .btn-theme-toggle:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .btn-theme-toggle:active {
+      transform: translateY(0);
+    }
+
+    /* Cards e Elementos de Exemplo */
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--borda-cor);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--sombra);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card h2 {
+      margin-bottom: 12px;
+      color: var(--cor-primaria);
+    }
+
+    .card p {
+      color: var(--texto-secundario);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- CABEÇALHO COM O BOTÃO DE MODO NOTURNO -->
+    <header>
+      <h1>Meu Site</h1>
+      
+      <!-- BOTÃO DO MODO ESCURO -->
+      <button id="theme-toggle-btn" class="btn-theme-toggle" aria-label="Alternar tema">
+        <span id="theme-toggle-icon">🌙</span>
+        <span id="theme-toggle-text">Modo Escuro</span>
+      </button>
+    </header>
+
+    <!-- CONTEÚDO DE EXEMPLO -->
+    <main>
+      <div class="card">
+        <h2>Card de Exemplo 1</h2>
+        <p>Este card altera a cor de fundo, as bordas e as cores do texto automaticamente quando você ativa o modo noturno.</p>
+      </div>
+
+      <div class="card">
+        <h2>Card de Exemplo 2</h2>
+        <p>A sua preferência de tema fica salva no navegador (`localStorage`), garantindo que o tema continue o mesmo ao atualizar a página.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+     4. JAVASCRIPT DE ALTERNÂNCIA E PERSISTÊNCIA DE TEMA
+     ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      const themeIcon = document.getElementById('theme-toggle-icon');
+      const themeText = document.getElementById('theme-toggle-text');
+
+      // 1. Função para aplicar o modo escuro
+      function setDarkMode(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark-mode');
+          themeIcon.textContent = '☀️';
+          themeText.textContent = 'Modo Claro';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeIcon.textContent = '🌙';
+          themeText.textContent = 'Modo Escuro';
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // 2. Verifica a preferência salva no localStorage ou no sistema operacional
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDarkSystem)) {
+        setDarkMode(true);
+      } else {
+        setDarkMode(false);
+      }
+
+      // 3. Escuta o clique no botão para alternar
+      themeBtn.addEventListener('click', () => {
+        const isCurrentlyDark = document.body.classList.contains('dark-mode');
+        setDarkMode(!isCurrentlyDark);
+      });
+    });
+  </script>
+
+</body>
+</html>
