@@ -465,3 +465,23 @@
     });
   })();
 </script>
+<section style="max-width: 800px; margin: 40px auto; padding: 20px;">
+  <h2>Mural da Empatia</h2>
+  <form onsubmit="adicionarMensagem(event)" style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <input type="text" id="inputMensagem" placeholder="Como você ajudou alguém hoje?" required style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    <button type="submit" style="padding: 10px 20px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer;">Publicar</button>
+  </form>
+  <ul id="listaMensagens" style="list-style: none; padding: 0;"></ul>
+
+  <script>
+    function adicionarMensagem(e) {
+      e.preventDefault();
+      const input = document.getElementById('inputMensagem');
+      const li = document.createElement('li');
+      li.style.cssText = "background: #fff; padding: 10px; border-left: 3px solid #2ecc71; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);";
+      li.textContent = input.value;
+      document.getElementById('listaMensagens').prepend(li);
+      input.value = '';
+    }
+  </script>
+</section>
